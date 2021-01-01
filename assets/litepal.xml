@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<litepal>
+    <dbname value="BookStore" />
+    <version value="1" />
+    <list>
+        <mapping class="com.xinhua.bookstore.Table.Book" />
+        <mapping class="com.xinhua.bookstore.Table.Category" />
+        <mapping class="com.xinhua.bookstore.Table.BC" />
+        <mapping class="com.xinhua.bookstore.Table.User" />
+    </list>
+</litepal>
