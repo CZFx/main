@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BookContent">
+    android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/content_imageid"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/BookPhoto2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/content_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="140dp"
+        android:text="¥64.8"
+        android:textColor="#FF9800"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_imageid" />
+
+    <TextView
+        android:id="@+id/content_price2"
+        android:layout_width="378dp"
+        android:layout_height="37dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="80dp"
+        android:text="视频安全危机信息系列丛书"
+        android:textColor="#FF9800"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content_price" />
+
+    <Button
+    android:id="@+id/content_Button1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Button"
+    tools:layout_editor_absoluteX="198dp"
+    tools:layout_editor_absoluteY="273dp"
 </androidx.constraintlayout.widget.ConstraintLayout>
