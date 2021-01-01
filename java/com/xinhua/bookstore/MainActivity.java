@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     public void init() {
+
+
         Connector.getDatabase();
         bookList = DataSupport.findAll(Book.class);
         //创建布局管理，加载RecyclerView
