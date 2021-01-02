@@ -14,11 +14,12 @@ import com.xinhua.bookstore.Table.Book;
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Book> bookList;
+    private List<Book> bookList=new ArrayList<>();
     private RecyclerView recyclerView;
 
     public void init() {
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        BookAdapter adapter=new BookAdapter(bookList);
+        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bookList = DataSupport.findAll(Book.class);
-        recyclerView.setAdapter(new StuAdapter(studentList));
+        recyclerView.setAdapter(new BookAdapter(bookList));
         /*//新增按钮监听器
         Button addStudent = findViewById(R.id.add_stu);
         addStudent.setOnClickListener(v -> {
