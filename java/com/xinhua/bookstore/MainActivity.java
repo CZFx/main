@@ -16,6 +16,8 @@ import com.xinhua.bookstore.Table.Book;
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,18 +34,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
     }
 
+    //增加数据库数据，进行一次测试
+    public void test() {
+        new Book(R.drawable.bookphoto2, "食品安全危机信息在社交媒体中的传播研究", "韩太平" ,"中国社会科学出版社",
+                null, 45.60).save();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv = (TextView) this.findViewById(R.id.text);
-        //把文字控件添加监听，点击弹出自定义窗口
-        tv.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddShoppingCart.class));
-            }
-        });
-
+        //test();
+        init();
     }
 
     @Override
