@@ -1,5 +1,6 @@
 package com.xinhua.bookstore;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,8 +52,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.bookView.setOnClickListener(v -> {
             int position=holder.getAdapterPosition();
             Book book=BookList.get(position);
-            Toast.makeText(v.getContext(),"you click view"+book.getName(),
-                    Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(v.getContext(), BookContent.class);
+            intent.putExtra("book", book);
+            v.getContext().startActivity(intent);
         });
 
             return  holder;

@@ -2,11 +2,12 @@ package com.xinhua.bookstore.Table;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Book extends DataSupport {
+public class Book extends DataSupport implements Serializable {
     private int id;//表中主键，也是书的唯一标识
     private int imageId;//图片资源ID
     private String name;//书名
