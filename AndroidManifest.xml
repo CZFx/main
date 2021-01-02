@@ -3,7 +3,9 @@
     package="com.xinhua.bookstore">
 
     <application
+
         android:name="org.litepal.LitePalApplication"
+        android:background="#ffffff"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

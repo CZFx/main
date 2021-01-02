@@ -36,7 +36,7 @@
         android:layout_margin="10dp"
         android:layout_marginTop="80dp"
         android:text="视频安全危机信息系列丛书"
-        android:textColor="#FF9800"
+        android:textColor="#FF6253"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,10 +44,25 @@
         app:layout_constraintTop_toBottomOf="@+id/content_price" />
 
     <Button
-    android:id="@+id/content_Button1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Button"
-    tools:layout_editor_absoluteX="198dp"
-    tools:layout_editor_absoluteY="273dp"
+        android:id="@+id/button"
+        android:layout_width="105dp"
+        android:layout_height="37dp"
+        android:text="Button"
+        android:textColor="#E91E63"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="90dp"
+        android:layout_height="42dp"
+        android:text="Button"
+        android:textColor="#FF2653"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
