@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                 List<User> userList = DataSupport.where("username = ?", username.getText().toString()).find(User.class);
                 if(userList.size() != 0 && userList.get(0).getPassword().equals(password.getText().toString())) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "用户名或密码错误", Toast.LENGTH_SHORT).show();
                 }
