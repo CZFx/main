@@ -2,6 +2,7 @@ package com.xinhua.bookstore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import com.xinhua.bookstore.Table.Book;
 
 public class BookContent extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +30,8 @@ public class BookContent extends AppCompatActivity {
         imageId.setImageResource(book.getImageId());
         price.setText("￥" + book.getPrice());
         name.setText(book.getName());
-        author.setText(book.getAuthor());
-        press.setText(book.getPress());
+        author.setText("作者：" + book.getAuthor());
+        press.setText("出版社：" + book.getPress());
 
         cart.setOnClickListener(v -> {
             startActivity(new Intent(this, ShoppingCart.class));
