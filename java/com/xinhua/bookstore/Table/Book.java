@@ -21,7 +21,7 @@ public class Book extends DataSupport {
     }
 
     /**
-     * @param id 表中主键，也是书的唯一标识
+     *
      * @param imageId 图片资源ID
      * @param name 书名
      * @param author 作者
@@ -29,8 +29,7 @@ public class Book extends DataSupport {
      * @param date 出版日期
      * @param price 书的价格
      */
-    public Book(int id, int imageId, String name, String author, String press, Date date, double price) {
-        this.id = id;
+    public Book(int imageId, String name, String author, String press, Date date, double price) {
         this.imageId = imageId;
         this.name = name;
         this.author = author;

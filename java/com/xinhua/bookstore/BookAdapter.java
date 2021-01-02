@@ -48,15 +48,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.book_item,parent,false);
         final  ViewHolder holder=new ViewHolder(view);
-        holder.bookView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                    int position=holder.getAdapterPosition();
-                    Book book=BookList.get(position);
-                    Toast.makeText(v.getContext(),"you click view"+book.getName(),
-                            Toast.LENGTH_SHORT).show();
-            }
+        holder.bookView.setOnClickListener(v -> {
+            int position=holder.getAdapterPosition();
+            Book book=BookList.get(position);
+            Toast.makeText(v.getContext(),"you click view"+book.getName(),
+                    Toast.LENGTH_SHORT).show();
         });
 
             return  holder;
