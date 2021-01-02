@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         bookList = DataSupport.findAll(Book.class);
         recyclerView.setAdapter(new BookAdapter(bookList));
-        /*//新增按钮监听器
-        Button addStudent = findViewById(R.id.add_stu);
+        //新增按钮监听器
+        Button addStudent = findViewById(R.id.add_book_button);
         addStudent.setOnClickListener(v -> {
-            startActivity(new Intent(this, AddStudent.class));
-        });*/
+            startActivity(new Intent(this, AddBook.class));
+        });
     }
 
 }
