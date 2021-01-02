@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
     public void init() {
-
-
         Connector.getDatabase();
         bookList = DataSupport.findAll(Book.class);
         //创建布局管理，加载RecyclerView
@@ -38,19 +36,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv=(TextView) this.findViewById(R.id.text);
-        tv.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddShoppingCart.class));
-            }
-        });
-
-        {
-        init();
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume () {
         super.onResume();
         bookList = DataSupport.findAll(Book.class);
         recyclerView.setAdapter(new BookAdapter(bookList));
@@ -60,4 +49,5 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, AddStudent.class));
         });*/
     }
+
 }

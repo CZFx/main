@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/content_imageid" />
 
     <TextView
-        android:id="@+id/content_price2"
+        android:id="@+id/content_book_name"
         android:layout_width="395dp"
         android:layout_height="45dp"
         android:layout_margin="10dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/content_price" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/content_chart"
         android:layout_width="105dp"
         android:layout_height="37dp"
         android:text="购物车"
@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/content_add_chart"
         android:layout_width="158dp"
         android:layout_height="37dp"
         android:text="加入购物车"
@@ -73,7 +73,7 @@
         android:textColor="#4CAF50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content_price2" />
+        app:layout_constraintTop_toBottomOf="@+id/content_book_name" />
 
     <TextView
         android:id="@+id/textView2"
