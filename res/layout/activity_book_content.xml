@@ -10,7 +10,7 @@
         android:id="@+id/content_imageid"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:src="@drawable/BookPhoto2"
+        android:src="@drawable/bookphoto2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
