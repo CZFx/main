@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Connector.getDatabase();
         bookList = DataSupport.findAll(Book.class);
         //创建布局管理，加载RecyclerView
-        //recyclerView = findViewById(R.id.recycler_view);
+        recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
     }
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bookList = DataSupport.findAll(Book.class);
-        //recyclerView.setAdapter(new StuAdapter(studentList));
+        recyclerView.setAdapter(new StuAdapter(studentList));
         /*//新增按钮监听器
         Button addStudent = findViewById(R.id.add_stu);
         addStudent.setOnClickListener(v -> {
