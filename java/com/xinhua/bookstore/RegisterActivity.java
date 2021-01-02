@@ -40,6 +40,9 @@ public class RegisterActivity extends AppCompatActivity {
             EditText birthEditText = findViewById(R.id.reg_birth);
             String username = usernameEditText.getText().toString();
             String password = passwordEditText.getText().toString();
+            boolean flag = true;
+            flag = (flag && username.matches("^[^0-9][\\w_]{5,9}$"));
+            flag = (flag && password.matches("^[\\w_]{6,20}$"));
             DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
             Date birth = null;
             try {
@@ -47,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            if (birth != null && sex != null){
+            if (flag && birth != null && sex != null){
                 new User(username, password, birth, sex).save();
                 Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
             } else {
