@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.xinhua.bookstore.MainActivity;
 import com.xinhua.bookstore.R;
 import com.xinhua.bookstore.RegisterActivity;
 
@@ -22,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
         bregister.setOnClickListener(new View.OnClickListener() {

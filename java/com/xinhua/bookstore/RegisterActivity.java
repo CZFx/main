@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText usernameEditText = findViewById(R.id.reg_username);
         usernameEditText.setText(getIntent().getStringExtra("username"));
 
-        String sex = null;
+
         RadioGroup radioGroup = findViewById(R.id.sex_radio_group);
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
@@ -36,13 +36,19 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         registerEditText.setOnClickListener(v -> {
+            String sex = null;
             EditText passwordEditText = findViewById(R.id.reg_password);
             EditText birthEditText = findViewById(R.id.reg_birth);
             String username = usernameEditText.getText().toString();
             String password = passwordEditText.getText().toString();
+            RadioButton r1, r2;
+            r1 = findViewById(R.id.sex_male);
+            r2 = findViewById(R.id.sex_female);
+            if(r1.isChecked()) sex = "男";
+            else sex = "女";
             boolean flag = true;
-            flag = (flag && username.matches("^[^0-9][\\w_]{5,9}$"));
-            flag = (flag && password.matches("^[\\w_]{6,20}$"));
+            flag = (flag && username.matches("^[a-zA-Z0-9_-]{4,16}$"));
+            flag = (flag && password.matches("[0-9A-Za-z\\W]{6,18}$"));
             DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
             Date birth = null;
             try {
@@ -50,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
             if (flag && birth != null && sex != null){
                 new User(username, password, birth, sex).save();
                 Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
