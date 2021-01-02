@@ -22,7 +22,6 @@ public class Book extends DataSupport implements Serializable {
     }
 
     /**
-     *
      * @param imageId 图片资源ID
      * @param name 书名
      * @param author 作者
