@@ -1,47 +1,65 @@
 package com.xinhua.bookstore;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
 
-public class AddShoppingCart extends Activity implements View.OnClickListener {
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.xinhua.bookstore.R;
+
+public class AddShoppingCart extends Activity implements OnClickListener{
+
+    private Button btn_take_photo, btn_pick_photo, btn_cancel;
+    private LinearLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super .onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_shopping_cart );
-//全屏Activity操作
-        getWindow().setLayout(WindowManager.LayoutParams. FILL_PARENT , WindowManager.LayoutParams. FILL_PARENT );
-//QQ分享按钮
-        ImageBtn MyIBtn1 = (ImageBtn)findViewById(R.id. MyIBtn_1 );
-        MyIBtn1.setImageResource(R.drawable. ic_share_qq );
-        MyIBtn1.setText( "QQ" );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.alert_dialog);
+        btn_take_photo = (Button) this.findViewById(R.id.btn_take_photo);
+        btn_pick_photo = (Button) this.findViewById(R.id.btn_pick_photo);
+        btn_cancel = (Button) this.findViewById(R.id.btn_cancel);
 
-        ImageBtn MyIBtn2 = (ImageBtn)findViewById(R.id. MyIBtn_2 );
-        MyIBtn2.setImageResource(R.drawable. ic_share_sina );
-        MyIBtn2.setText( "微博" );
-        ImageBtn MyIBtn3 = (ImageBtn)findViewById(R.id. MyIBtn_3 );
-        MyIBtn3.setImageResource(R.drawable. ic_share_wechat );
-        MyIBtn3.setText( "微信" );
-        ImageBtn MyIBtn4 = (ImageBtn)findViewById(R.id. MyIBtn_4 );
-        MyIBtn4.setImageResource(R.drawable. ic_share_wxcircle );
-        MyIBtn4.setText( "朋友圈" );
-        Button btn_cancel = (Button) this .findViewById(R.id. btn_cancel );
-        btn_cancel.setOnClickListener( this );
+        layout=(LinearLayout)findViewById(R.id.pop_layout);
+
+        //添加选择窗口范围监听可以优先获取触点，即不再执行onTouchEvent()函数，点击其他地方时执行onTouchEvent()函数销毁Activity
+        layout.setOnClickListener(new OnClickListener() {
+
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Toast.makeText(getApplicationContext(), "提示：点击窗口外部关闭窗口！",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        //添加按钮监听
+        btn_cancel.setOnClickListener(this);
+        btn_pick_photo.setOnClickListener(this);
+        btn_take_photo.setOnClickListener(this);
     }
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
 
-            case R.id. btn_cancel :
-                break ;
-            default :
-                break ;
+    //实现onTouchEvent触屏函数但点击屏幕时销毁本Activity
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        finish();
+        return true;
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_take_photo:
+                break;
+            case R.id.btn_pick_photo:
+                break;
+            case R.id.btn_cancel:
+                break;
+            default:
+                break;
         }
         finish();
     }
-}
 
+}

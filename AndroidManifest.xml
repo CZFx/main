@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity android:name=".AddShoppingCart">
+            android:theme= "@style/AddShoppingCart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
     </application>
 
