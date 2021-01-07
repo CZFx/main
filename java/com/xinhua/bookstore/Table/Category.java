@@ -22,6 +22,14 @@ public class Category extends DataSupport {
         return bookList;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCategory() {
         return category;
     }

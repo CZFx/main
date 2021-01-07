@@ -13,11 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xinhua.bookstore.Table.Category;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddBookAdapter extends RecyclerView.Adapter<AddBookAdapter.ViewHolder> {
 
     private List<Category> categoryList = new ArrayList<>();
+    //用来记录所有checkbox的状态
+    private Map<String, Boolean> checkStatus = new HashMap<>();
+
+    public Map<String, Boolean> getCheckStatus() {
+        return checkStatus;
+    }
 
     public AddBookAdapter(List<Category> categoryList) {
         this.categoryList = categoryList;
@@ -35,6 +43,9 @@ public class AddBookAdapter extends RecyclerView.Adapter<AddBookAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.categoryTextView.setText(category.getCategory());
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkStatus.put(category.getCategory(), isChecked);
+        });
     }
 
     @Override
@@ -45,10 +56,12 @@ public class AddBookAdapter extends RecyclerView.Adapter<AddBookAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder{
         View categoryView;
         TextView categoryTextView;
+        CheckBox checkBox;
         public ViewHolder(@NonNull View view) {
             super(view);
             categoryView = view;
             categoryTextView = view.findViewById(R.id.add_book_category);
+            checkBox = view.findViewById(R.id.add_book_checkbox);
         }
     }
 }

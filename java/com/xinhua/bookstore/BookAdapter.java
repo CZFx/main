@@ -37,7 +37,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Book book=BookList.get(position);
-        holder.book_price.setText(String.valueOf(book.getPrice()));
+        holder.book_price.setText("￥" + book.getPrice());
         holder.book_name.setText(book.getName());
         holder.book_author.setText(book.getAuthor());
         holder.book_image.setImageResource(book.getImageId());
@@ -56,8 +56,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             intent.putExtra("book", book);
             v.getContext().startActivity(intent);
         });
-
-            return  holder;
+        return  holder;
     }
     public BookAdapter(List<Book> bookList) {
         BookList = bookList;

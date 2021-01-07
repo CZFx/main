@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.xinhua.bookstore.Table.BC;
 import com.xinhua.bookstore.Table.Book;
 import com.xinhua.bookstore.Table.Category;
 
@@ -20,18 +22,22 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddBook extends Activity {
 
     private List<Category> categoryList = new ArrayList<>();
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+    AddBookAdapter adapter;
 
     public void init() {
         categoryList = DataSupport.findAll(Category.class);
         recyclerView = findViewById(R.id.add_book_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new AddBookAdapter(categoryList));
+        adapter = new AddBookAdapter(categoryList);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -45,7 +51,6 @@ public class AddBook extends Activity {
             EditText nameEditText = findViewById(R.id.add_book_name);
             EditText authorEditText = findViewById(R.id.add_book_author);
             EditText pressEditText = findViewById(R.id.add_book_press);
-            EditText dateEditText = findViewById(R.id.add_book_date);
             EditText priceEditText = findViewById(R.id.add_book_price);
             EditText imageIdEditText = findViewById(R.id.add_book_imageId);
 
@@ -54,16 +59,21 @@ public class AddBook extends Activity {
             String press = pressEditText.getText().toString();
             double price = Double.parseDouble(priceEditText.getText().toString());
             int imageId = Integer.parseInt(imageIdEditText.getText().toString());
-            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
-            Date date = null;
-            try {
-                date = fmt.parse(dateEditText.getText().toString());
-            } catch (ParseException e) {
-                e.printStackTrace();
+
+            Book book = new Book(imageId, name, author, press, price);
+            book.save();
+            book = DataSupport.findLast(Book.class);
+            Map<String, Boolean> checkStatus = adapter.getCheckStatus();
+            List<Category> checkedCategoryList = new ArrayList<>();
+            for (String key : checkStatus.keySet()) {
+                checkedCategoryList = DataSupport.where("category = ?", key).find(Category.class);
+                new BC(book.getId(), checkedCategoryList.get(0).getId()).save();
+                Log.d("AddBook", String.valueOf(book.getId()));
+                Log.d("AddBook", String.valueOf(checkedCategoryList.get(0).getId()));
             }
 
-            new Book(imageId, name, author, press, date, price).save();
             Toast.makeText(this, "add succeed", Toast.LENGTH_SHORT).show();
+            finish();
         });
 
     }

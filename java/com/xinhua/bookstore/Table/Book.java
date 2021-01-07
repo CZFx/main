@@ -13,7 +13,6 @@ public class Book extends DataSupport implements Serializable {
     private String name;//书名
     private String author;//作者
     private String press;//出版社
-    private Date date;//出版日期
     private double price;//书的价格
     private List<BC> categoryList = new ArrayList<>();//书的种类
 
@@ -26,29 +25,19 @@ public class Book extends DataSupport implements Serializable {
      * @param name 书名
      * @param author 作者
      * @param press 出版社
-     * @param date 出版日期
      * @param price 书的价格
      */
-    public Book(int imageId, String name, String author, String press, Date date, double price) {
+    public Book(int imageId, String name, String author, String press, double price) {
         this.imageId = imageId;
         this.name = name;
         this.author = author;
         this.press = press;
-        this.date = date;
         this.price = price;
     }
 
     public List<BC> getCategoryList() {
         categoryList = DataSupport.where("book_id = ?", String.valueOf(id)).find(BC.class);
         return categoryList;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public int getId() {

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class MainActivity extends Activity {
     public void test() {
         DataSupport.deleteAll(Book.class);
         new Book(R.drawable.bookphoto2, "食品安全危机信息在社交媒体中的传播研究", "韩太平" ,"中国社会科学出版社",
-                null, 45.60).save();
+                 45.60).save();
     }
     //增加数据库数据
     public void addCategory() {
@@ -55,13 +56,19 @@ public class MainActivity extends Activity {
         new Category("日记").save();
     }
 
+    public void showImageId() {
+        Log.d("MainActivity", String.valueOf(R.drawable.book_image1));
+        Log.d("MainActivity", String.valueOf(R.drawable.book_image2));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        test();
-        addCategory();
+        //test();
+        //addCategory();
         init();
+        showImageId();
     }
 
     @Override
