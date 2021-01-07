@@ -1,9 +1,14 @@
 package com.xinhua.bookstore;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xinhua.bookstore.Table.Book;
+
+import org.litepal.crud.DataSupport;
 
 import java.util.List;
 
@@ -41,6 +48,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.book_name.setText(book.getName());
         holder.book_author.setText(book.getAuthor());
         holder.book_image.setImageResource(book.getImageId());
+
     }
     public int getItemCount() {
         return BookList.size();
@@ -56,7 +64,34 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             intent.putExtra("book", book);
             v.getContext().startActivity(intent);
         });
-        return  holder;
+        //长按可以进行编辑或者修改
+        holder.bookView.setOnLongClickListener(v -> {
+            int position=holder.getAdapterPosition();
+            Dialog dialog = new Dialog(v.getContext());
+            dialog.setTitle("操作");
+            dialog.setContentView(R.layout.book_long_click_dialog);
+            dialog.setCanceledOnTouchOutside(true);
+            dialog.show();
+
+            Button bookDelete = v.findViewById(R.id.book_delete);
+            Button bookEdit = v.findViewById(R.id.book_edit);
+
+            bookDelete.setOnClickListener(v1 -> {
+                AlertDialog.Builder deleteDialog = new AlertDialog.Builder(v.getContext());
+                deleteDialog.setTitle("提示");
+                deleteDialog.setMessage("确定要删除吗？");
+                deleteDialog.setPositiveButton("确定", (dialog1, which) -> {
+                    Book book = BookList.get(position);
+                    DataSupport.deleteAll(Book.class, "id = ?", String.valueOf(book.getId()));
+                    Toast.makeText(v.getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+                });
+            });
+            bookEdit.setOnClickListener(v1 -> {
+
+            });
+            return true;
+        });
+        return holder;
     }
     public BookAdapter(List<Book> bookList) {
         BookList = bookList;

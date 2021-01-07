@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 
-
     <!--位于底部dialog的风格-->
     <style name="DialogBottom" parent="@android:style/Theme.Dialog">
         <!-- 背景透明 -->
