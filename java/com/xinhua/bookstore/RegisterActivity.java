@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         EditText usernameEditText = findViewById(R.id.reg_username);
         usernameEditText.setText(getIntent().getStringExtra("username"));
 
-
         RadioGroup radioGroup = findViewById(R.id.sex_radio_group);
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);

@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        System.out.println(R.drawable.bookphoto2);
         Button blogin, bregister;
         blogin = findViewById(R.id.login_login);
         bregister = findViewById(R.id.login_register);
