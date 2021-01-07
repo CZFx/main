@@ -25,7 +25,7 @@ import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private List<Book> BookList;
-
+    private MainActivity mainActivity;
     static class ViewHolder extends RecyclerView.ViewHolder{
         View bookView;
         TextView book_name;
@@ -86,12 +86,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                     Book book = BookList.get(position);
                     DataSupport.deleteAll(Book.class, "id = ?", String.valueOf(book.getId()));
                     DataSupport.deleteAll(BC.class, "book_id = ?", String.valueOf(book.getId()));
-                    v.getContext().startActivity(new Intent(v.getContext(), MainActivity.class));
+                    mainActivity.onResume();
                     Toast.makeText(v.getContext(), "删除成功", Toast.LENGTH_SHORT).show();
+
                 });
                 deleteDialog.setNegativeButton("取消", (dialog1, which) -> {
                 });
                 deleteDialog.show();
+                dialog.hide();
             });
             bookEdit.setOnClickListener(v1 -> {
                 Book book = BookList.get(position);
@@ -103,7 +105,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         });
         return holder;
     }
-    public BookAdapter(List<Book> bookList) {
+    public BookAdapter(List<Book> bookList, MainActivity mainActivity) {
         BookList = bookList;
+        this.mainActivity = mainActivity;
     }
 }

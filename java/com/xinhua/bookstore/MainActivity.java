@@ -74,11 +74,10 @@ public class MainActivity extends Activity {
         showImageId();
     }
 
-    @Override
-    protected void onResume () {
-        super.onResume();
+
+    public void fresh() {
         bookList = DataSupport.findAll(Book.class);
-        recyclerView.setAdapter(new BookAdapter(bookList));
+        recyclerView.setAdapter(new BookAdapter(bookList, this));
         //新增按钮监听器
         Button addStudent = findViewById(R.id.add_book_button);
         addStudent.setOnClickListener(v -> {
@@ -96,8 +95,13 @@ public class MainActivity extends Activity {
             } else {
                 onResume();
             }
-            recyclerView.setAdapter(new BookAdapter(bookList));
+            recyclerView.setAdapter(new BookAdapter(bookList, this));
         });
+    }
+    @Override
+    protected void onResume () {
+        super.onResume();
+        this.fresh();
     }
 
 }
