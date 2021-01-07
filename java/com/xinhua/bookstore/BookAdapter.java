@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xinhua.bookstore.Table.BC;
 import com.xinhua.bookstore.Table.Book;
 
 import org.litepal.crud.DataSupport;
@@ -67,14 +68,15 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         //长按可以进行编辑或者修改
         holder.bookView.setOnLongClickListener(v -> {
             int position=holder.getAdapterPosition();
+            View view1 = View.inflate(v.getContext(), R.layout.book_long_click_dialog, null);
             Dialog dialog = new Dialog(v.getContext());
             dialog.setTitle("操作");
-            dialog.setContentView(R.layout.book_long_click_dialog);
+            dialog.setContentView(view1);
             dialog.setCanceledOnTouchOutside(true);
             dialog.show();
 
-            Button bookDelete = v.findViewById(R.id.book_delete);
-            Button bookEdit = v.findViewById(R.id.book_edit);
+            Button bookDelete = view1.findViewById(R.id.book_delete);
+            Button bookEdit = view1.findViewById(R.id.book_edit);
 
             bookDelete.setOnClickListener(v1 -> {
                 AlertDialog.Builder deleteDialog = new AlertDialog.Builder(v.getContext());
@@ -83,11 +85,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                 deleteDialog.setPositiveButton("确定", (dialog1, which) -> {
                     Book book = BookList.get(position);
                     DataSupport.deleteAll(Book.class, "id = ?", String.valueOf(book.getId()));
+                    DataSupport.deleteAll(BC.class, "book_id = ?", String.valueOf(book.getId()));
                     Toast.makeText(v.getContext(), "删除成功", Toast.LENGTH_SHORT).show();
                 });
+                deleteDialog.setNegativeButton("取消", (dialog1, which) -> {
+                });
+                deleteDialog.show();
             });
             bookEdit.setOnClickListener(v1 -> {
-
+                Book book = BookList.get(position);
+                Intent intent = new Intent(v.getContext(), EditBook.class);
+                intent.putExtra("book", book);
+                v.getContext().startActivity(intent);
             });
             return true;
         });

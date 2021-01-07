@@ -10,16 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
-        <activity android:name=".AddBook"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".EditBook"></activity>
+        <activity
+            android:name=".AddBook"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ShoppingCart" />
         <activity android:name=".BookContent" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".ui.login.LoginActivity">
-
-        </activity>
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+        <activity android:name=".ui.login.LoginActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
