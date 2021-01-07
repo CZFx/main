@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.opengl.ETC1;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xinhua.bookstore.Table.BC;
@@ -59,6 +61,7 @@ public class MainActivity extends Activity {
     public void showImageId() {
         Log.d("MainActivity", String.valueOf(R.drawable.book_image1));
         Log.d("MainActivity", String.valueOf(R.drawable.book_image2));
+        Log.d("MainActivity", String.valueOf(R.drawable.bookphoto2));
     }
 
     @Override
@@ -79,7 +82,21 @@ public class MainActivity extends Activity {
         //新增按钮监听器
         Button addStudent = findViewById(R.id.add_book_button);
         addStudent.setOnClickListener(v -> {
+            showImageId();
             startActivity(new Intent(this, AddBook.class));
+        });
+
+        //搜索监听器
+        Button searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(v -> {
+            EditText searchText = findViewById(R.id.search_text);
+            String search = searchText.getText().toString();
+            if (search != null && !search.equals("")) {
+                bookList = DataSupport.where("name = ?", search).find(Book.class);
+            } else {
+                onResume();
+            }
+            recyclerView.setAdapter(new BookAdapter(bookList));
         });
     }
 
