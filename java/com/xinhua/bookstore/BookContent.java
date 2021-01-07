@@ -3,8 +3,10 @@ package com.xinhua.bookstore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,7 +39,13 @@ public class BookContent extends AppCompatActivity {
             startActivity(new Intent(this, ShoppingCart.class));
         });
         addToCart.setOnClickListener(v -> {
-            startActivity(new Intent(this, AddShoppingCart.class));
+            //startActivity(new Intent(this, AddShoppingCart.class));
+            //透明底部弹窗
+            Dialog dialog = new Dialog(this, R.style.DialogBottom);
+            dialog.getWindow().setGravity(Gravity.BOTTOM);
+            dialog.setContentView(R.layout.activity_add_shopping_cart);
+            dialog.setCanceledOnTouchOutside(true);
+            dialog.show();
         });
     }
 }

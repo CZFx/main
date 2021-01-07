@@ -6,7 +6,13 @@
     android:id="@+id/add_cart_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom">
+    android:layout_gravity="bottom" >
+
+    <View
+        android:layout_width="500dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ffffff"/>
 
     <ImageView
         android:id="@+id/add_cart_imageId"
@@ -14,6 +20,7 @@
         android:layout_height="134dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/bookphoto2"
         app:layout_constraintBottom_toTopOf="@+id/add_to_cart"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,11 +32,11 @@
         android:text="￥93.1"
         android:textColor="#FF0000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/content_imageid"
+        app:layout_constraintBottom_toBottomOf="@+id/add_cart_imageId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.224"
-        app:layout_constraintStart_toEndOf="@+id/content_imageid"
-        app:layout_constraintTop_toTopOf="@+id/content_imageid"
+        app:layout_constraintStart_toEndOf="@+id/add_cart_imageId"
+        app:layout_constraintTop_toTopOf="@+id/add_cart_imageId"
         app:layout_constraintVertical_bias="0.252" />
 
     <Button
@@ -40,7 +47,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="加入购物车"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"

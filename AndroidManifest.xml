@@ -11,8 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity android:name=".AddBook" />
-        <activity android:name=".AddShoppingCart"
-                  android:theme="@style/MyDialogStyleBottom"/>
         <activity android:name=".ShoppingCart" />
         <activity android:name=".BookContent" />
         <activity android:name=".RegisterActivity" />
