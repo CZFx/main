@@ -3,6 +3,7 @@ package com.xinhua.bookstore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 import com.xinhua.bookstore.Table.Book;
 
-public class BookContent extends AppCompatActivity {
+public class BookContent extends Activity {
 
     @SuppressLint("SetTextI18n")
     @Override

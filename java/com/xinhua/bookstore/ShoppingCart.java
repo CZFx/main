@@ -2,6 +2,7 @@ package com.xinhua.bookstore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.Map;
 import java.util.Random;
 
 
-public class ShoppingCart extends AppCompatActivity implements CartAdapter.RefreshPriceInterface ,View.OnClickListener{
+public class ShoppingCart extends Activity implements CartAdapter.RefreshPriceInterface ,View.OnClickListener{
 
     private ListView listView;
     private CheckBox cb_check_all;
