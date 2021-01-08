@@ -16,6 +16,7 @@ import com.xinhua.bookstore.RegisterActivity;
 import com.xinhua.bookstore.Table.User;
 
 import org.litepal.crud.DataSupport;
+import org.litepal.tablemanager.Connector;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 EditText username, password;
                 username = findViewById(R.id.login_username);
                 password = findViewById(R.id.login_password);
-
+                Connector.getDatabase();
                 List<User> userList = DataSupport.where("username = ?", username.getText().toString()).find(User.class);
                 if(userList.size() != 0 && userList.get(0).getPassword().equals(password.getText().toString())) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));

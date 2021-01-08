@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.xinhua.bookstore.Table.BC;
 import com.xinhua.bookstore.Table.Book;
 import com.xinhua.bookstore.Table.Category;
+import com.xinhua.bookstore.network.BackThread;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
@@ -25,18 +26,21 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private List<Book> bookList;
     private RecyclerView recyclerView;
 
     public void init() {
+//        test();
+//        addCategory();
         Connector.getDatabase();
         bookList = DataSupport.findAll(Book.class);
         //创建布局管理，加载RecyclerView
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        new BackThread(getApplicationContext()).start();
     }
 
     //增加数据库数据，进行一次测试

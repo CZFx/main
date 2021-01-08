@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.xinhua.bookstore.Table.Book;
 
-public class BookContent extends Activity {
+public class BookContent extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     @Override
