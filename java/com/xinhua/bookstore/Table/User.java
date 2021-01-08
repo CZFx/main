@@ -5,12 +5,13 @@ import org.litepal.crud.DataSupport;
 import java.util.Date;
 
 public class User extends DataSupport {
-    private int id;
-    private String username;
-    private String password;
-    private Date birth;
-    private String sex;
-    private boolean root;
+    private int id;//表中主键，用户身份的唯一标识
+    private String username;//用户名
+    private String password;//密码
+    private Date birth;//用户生日
+    private String sex;//用户性别
+    private boolean root;//是否为管理员
+    private int cart_id;//用户所对应的购物车
 
     public User(String username, String password, Date birth, String sex) {
         this.username = username;
@@ -20,6 +21,22 @@ public class User extends DataSupport {
     }
 
     public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCart_id() {
+        return cart_id;
+    }
+
+    public void setCart_id(int cart_id) {
+        this.cart_id = cart_id;
     }
 
     public Date getBirth() {

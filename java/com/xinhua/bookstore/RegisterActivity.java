@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.xinhua.bookstore.Table.Cart;
 import com.xinhua.bookstore.Table.User;
 
 import org.litepal.crud.DataSupport;
@@ -65,6 +66,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
             if (flag && birth != null && sex != null){
                 new User(username, password, birth, sex).save();
+                //创建该用户对应的购物车 By zfx
+                User user = DataSupport.findLast(User.class);
+                new Cart(user.getId()).save();
+                Cart cart = DataSupport.findLast(Cart.class);
+                user.setCart_id(cart.getId());
+                user.update(user.getId());
+
                 Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
                 finish();
             } else {

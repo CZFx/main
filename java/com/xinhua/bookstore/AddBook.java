@@ -53,14 +53,16 @@ public class AddBook extends Activity {
             EditText pressEditText = findViewById(R.id.add_book_press);
             EditText priceEditText = findViewById(R.id.add_book_price);
             EditText imageIdEditText = findViewById(R.id.add_book_imageId);
+            EditText numEditText = findViewById(R.id.add_book_num);
 
             String name = nameEditText.getText().toString();
             String author = authorEditText.getText().toString();
             String press = pressEditText.getText().toString();
             double price = Double.parseDouble(priceEditText.getText().toString());
             int imageId = Integer.parseInt(imageIdEditText.getText().toString());
+            int num = Integer.parseInt(numEditText.getText().toString());
 
-            Book book = new Book(imageId, name, author, press, price);
+            Book book = new Book(imageId, name, author, press, num, price);
             book.save();
             book = DataSupport.findLast(Book.class);
             Map<String, Boolean> checkStatus = adapter.getCheckStatus();

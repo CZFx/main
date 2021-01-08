@@ -46,6 +46,7 @@ public class EditBook extends Activity {
         EditText pressEditText = findViewById(R.id.edit_book_press);
         EditText priceEditText = findViewById(R.id.edit_book_price);
         EditText imageIdEditText = findViewById(R.id.edit_book_imageId);
+        EditText numEditText = findViewById(R.id.edit_book_num);
 
         Book book = (Book) getIntent().getSerializableExtra("book");
         nameEditText.setText(book.getName());
@@ -53,6 +54,7 @@ public class EditBook extends Activity {
         pressEditText.setText(book.getPress());
         priceEditText.setText(String.valueOf(book.getPrice()));
         imageIdEditText.setText(String.valueOf(book.getImageId()));
+        numEditText.setText(String.valueOf(book.getNum()));
 
         Button editBook = findViewById(R.id.edit_book);
         editBook.setOnClickListener(v -> {
@@ -61,8 +63,9 @@ public class EditBook extends Activity {
             String press = pressEditText.getText().toString();
             double price = Double.parseDouble(priceEditText.getText().toString());
             int imageId = Integer.parseInt(imageIdEditText.getText().toString());
+            int num = Integer.parseInt(numEditText.getText().toString());
 
-            Book book1 = new Book(imageId, name, author, press, price);
+            Book book1 = new Book(imageId, name, author, press, num, price);
             book1.updateAll("id = ?", String.valueOf(book.getId()));
             book1 = DataSupport.find(Book.class, book.getId());
             DataSupport.deleteAll(BC.class, "book_id = ?", String.valueOf(book1.getId()));

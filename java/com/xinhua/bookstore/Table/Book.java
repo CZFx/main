@@ -4,7 +4,6 @@ import org.litepal.crud.DataSupport;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Book extends DataSupport implements Serializable {
@@ -14,25 +13,36 @@ public class Book extends DataSupport implements Serializable {
     private String author;//作者
     private String press;//出版社
     private double price;//书的价格
+    private int cart_id;//此字段只在书被加入购物车后才有实际意义
+    private int num;//这是一个两用的变量，可以表示书的库存量（在图书列表界面）或者是书的数量（在购物车界面）
     private List<BC> categoryList = new ArrayList<>();//书的种类
-
 
     public Book() {
     }
 
-    /**
-     * @param imageId 图片资源ID
-     * @param name 书名
-     * @param author 作者
-     * @param press 出版社
-     * @param price 书的价格
-     */
-    public Book(int imageId, String name, String author, String press, double price) {
+    public Book(int imageId, String name, String author, String press, int num, double price) {
         this.imageId = imageId;
         this.name = name;
         this.author = author;
         this.press = press;
         this.price = price;
+        this.num = num;
+    }
+
+    public int getCart_id() {
+        return cart_id;
+    }
+
+    public void setCart_id(int cart_id) {
+        this.cart_id = cart_id;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public List<BC> getCategoryList() {

@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
     //增加数据库数据，进行一次测试
     public void test() {
         DataSupport.deleteAll(Book.class);
-        new Book(R.drawable.bookphoto2, "食品安全危机信息在社交媒体中的传播研究", "韩太平" ,"中国社会科学出版社",
+        new Book(R.drawable.bookphoto2, "食品安全危机信息在社交媒体中的传播研究", "韩太平" ,"中国社会科学出版社", 10,
                  45.60).save();
     }
     //增加数据库数据
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
         new Category("剧本").save();
         new Category("日记").save();
     }
-
+    //显示可用的图片资源id
     public void showImageId() {
         Log.d("MainActivity", String.valueOf(R.drawable.book_image1));
         Log.d("MainActivity", String.valueOf(R.drawable.book_image2));
