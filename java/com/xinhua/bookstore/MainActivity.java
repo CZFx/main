@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        new BackThread(getApplicationContext()).start();
+
     }
 
     //增加数据库数据，进行一次测试
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new BackThread(getApplicationContext()).start();
         //test();
         //addCategory();
         init();
